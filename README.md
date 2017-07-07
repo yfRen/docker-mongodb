@@ -16,11 +16,11 @@ mongodb:2.6.12
 
 运行镜像并绑定到27017和28017端口：
 
-docker run -d -p 27017:27017 -p 28017:28017 mongodb:2.6.12
+    docker run -d -p 27017:27017 -p 28017:28017 mongodb:2.6.12
 
 运行容器的第一次，会随机生成一个新的密码，要获得密码，运行检查容器日志命令：
 
-docker logs <CONTAINER_ID>
+    docker logs <CONTAINER_ID>
 
 您将看到以下的输出：
 
@@ -36,7 +36,7 @@ docker logs <CONTAINER_ID>
     
 在这种情况下，5elsT6KtjrqV是密码组。然后，您可以连接到MongoDB的：
 
-mongo admin -u admin -p 5elsT6KtjrqV
+    mongo admin -u admin -p 5elsT6KtjrqV
 
 完成！
 
@@ -44,20 +44,20 @@ mongo admin -u admin -p 5elsT6KtjrqV
 
 如果您想要使用预设的密码，而不是一个随机生成的密码，你可以在运行容器时环境变量设置MONGODB_PASS您的特定密码：
 
-docker run -d -p 27017:27017 -p 28017:28017 -e MONGODB_PASS=mypass mongodb:2.6.12
+    docker run -d -p 27017:27017 -p 28017:28017 -e MONGODB_PASS=mypass mongodb:2.6.12
 
 您现在可以测试你的新的管理员密码：
 
-mongo admin -u admin -p mypass
+    mongo admin -u admin -p mypass
 
-curl --user admin:mypass --digest http://localhost:28017/
+    curl --user admin:mypass --digest http://localhost:28017/
 
 
 没有密码执行MongoDB
 
 如果你想，没有密码执行MongoDB，你可以在容器运行时设置环境变量AUTH
 
-docker run -d -p 27017:27017 -p 28017:28017 -e AUTH=no mongodb:2.6.12
+    docker run -d -p 27017:27017 -p 28017:28017 -e AUTH=no mongodb:2.6.12
 
 在默认情况下是”yes”。
 
@@ -65,8 +65,8 @@ docker run -d -p 27017:27017 -p 28017:28017 -e AUTH=no mongodb:2.6.12
 
 如果你想使用其他数据库与其他用户
 
-docker run -d -p 27017:27017 -p 28017:28017 -e MONGODB_USER=user -e MONGODB_DATABASE=mydatabase -e MONGODB_PASS=mypass mongodb:2.6.12
+    docker run -d -p 27017:27017 -p 28017:28017 -e MONGODB_USER=user -e MONGODB_DATABASE=mydatabase -e MONGODB_PASS=mypass mongodb:2.6.12
 
 您现在可以测试您的新的凭据：
 
-mongo mydatabase -u user -p mypass
+    mongo mydatabase -u user -p mypass

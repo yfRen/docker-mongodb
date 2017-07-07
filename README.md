@@ -22,6 +22,7 @@ docker run -d -p 27017:27017 -p 28017:28017 mongodb:2.6.12
 docker logs <CONTAINER_ID>
 
 您将看到以下的输出：
+
     ======================================================================
     
     You can now connect to this MongoDB server using:
